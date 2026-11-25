@@ -17,7 +17,11 @@
 <script>document.body.classList.toggle("movel",innerWidth<820||innerHeight>innerWidth*0.95);</script>
 
 <header class="topo">
-  <a class="topo__marca" id="marca" inert href="#" aria-label="Vértice 86 — Oficina Automotiva, início"><img src="logo-small.webp" alt="" width="432" height="144"></a>
+  <a class="topo__marca" id="marca" inert href="#" aria-label="Vértice 86 — Oficina Automotiva, início"><img src="logo-small.webp"
+        srcset="logo-small-144.webp 144w,
+                logo-small-288.webp 288w,
+                logo-small.webp 432w"
+        sizes="132px" alt="" width="432" height="144"></a>
   <div class="topo__acoes">
     <a class="pular" href="#info">Pular animação</a>
     <a class="botao botao--topo" data-zap href="#contato-demo">Orçamento</a>
@@ -40,7 +44,19 @@
       <div class="vinheta"></div>
 
       <div class="abertura" id="abertura">
-        <img class="abertura__logo" src="logo.webp" alt="Vértice 86 Automotiva — carro clássico" width="1500" height="500">
+        <img class="abertura__logo"
+        src="logo.webp"
+        srcset="logo-480.webp 480w,
+                logo-900.webp 900w,
+                logo-1080.webp 1080w,
+                logo.webp 1500w"
+        sizes="(max-width: 819px) and (max-height: 700px) min(40svh, 78vw, 360px),
+               (max-aspect-ratio: 20/19) and (max-height: 700px) min(40svh, 78vw, 360px),
+               (max-width: 819px) min(44svh, 82vw, 400px),
+               (max-aspect-ratio: 20/19) min(44svh, 82vw, 400px),
+               min(60vh, 80vw, 540px)"
+        fetchpriority="high"
+        loading="eager" alt="Vértice 86 Automotiva — carro clássico" width="1500" height="500">
         <div class="abertura__dica" aria-live="polite">
           <span id="dica">Carregando o vídeo</span>
           <div class="abertura__carga"><i id="carga"></i></div>
