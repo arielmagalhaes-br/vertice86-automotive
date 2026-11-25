@@ -359,3 +359,19 @@ body.movel .abertura.pronto #dica {
 body.movel .abertura.pronto #dica::before {
   bottom: calc(100% + 10px);
 }
+
+
+/* V8 - Renderizacao eficiente no mobile */
+@supports (content-visibility: auto) and (contain-intrinsic-block-size: auto 1800px) {
+
+  body.movel .info {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 1800px;
+  }
+
+  body.movel .info:target,
+  body.movel .info:focus-within {
+    content-visibility: visible;
+  }
+
+}
