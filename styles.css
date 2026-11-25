@@ -233,37 +233,58 @@ body.parado .trilha{height:100svh}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
 
 /* ---------- indicador de rolagem tecnologico (desktop) ---------- */
-body:not(.movel) .abertura.pronto .abertura__dica{
+.abertura.pronto .abertura__dica{
   gap:12px;
   color:var(--branco);
   text-shadow:0 2px 10px #000,0 0 16px #000;
 }
-body:not(.movel) .abertura.pronto #dica{
+.abertura.pronto #dica{
   display:flex;flex-direction:column;align-items:center;gap:16px;
   font:600 18px/1.2 var(--corpo);letter-spacing:.15em;text-transform:uppercase;
 }
-body:not(.movel) .abertura.pronto #dica::before{
+.abertura.pronto #dica::before{
   content:"";display:block;box-sizing:border-box;width:34px;height:54px;
   border:2px solid var(--prata);border-radius:18px;
   background:radial-gradient(ellipse closest-side,var(--farol) 94%,transparent 100%) 50% 8px/5px 13px no-repeat;
   filter:drop-shadow(0 1px 5px rgba(0,0,0,.8));
   animation:indicador-roda 1.8s ease-in-out infinite;
 }
-body:not(.movel) .abertura.pronto .abertura__fio{
+.abertura.pronto .abertura__fio{
   display:block;width:26px;height:27px;background:none;overflow:visible;
   filter:drop-shadow(0 1px 4px rgba(0,0,0,.8));
 }
-body:not(.movel) .abertura.pronto .abertura__fio::before,
-body:not(.movel) .abertura.pronto .abertura__fio::after{
+.abertura.pronto .abertura__fio::before,
+.abertura.pronto .abertura__fio::after{
   content:"";position:absolute;left:8px;top:0;width:10px;height:10px;
   background:none;border-right:2px solid var(--farol);border-bottom:2px solid var(--farol);
   transform:rotate(45deg);animation:indicador-seta 1.8s ease-in-out infinite;
 }
-body:not(.movel) .abertura.pronto .abertura__fio::after{top:10px;animation-delay:.2s}
+.abertura.pronto .abertura__fio::after{top:10px;animation-delay:.2s}
 @keyframes indicador-roda{0%,100%{background-position:50% 8px}65%{background-position:50% 22px}}
 @keyframes indicador-seta{0%,100%{opacity:.55;transform:translateY(0) rotate(45deg)}50%{opacity:1;transform:translateY(4px) rotate(45deg)}}
 @media(prefers-reduced-motion:reduce){
-  body:not(.movel) .abertura.pronto #dica::before,
-  body:not(.movel) .abertura.pronto .abertura__fio::before,
-  body:not(.movel) .abertura.pronto .abertura__fio::after{animation:none!important}
+  .abertura.pronto #dica::before,
+  .abertura.pronto .abertura__fio::before,
+  .abertura.pronto .abertura__fio::after{animation:none!important}
+}
+
+/* Indicador tecnologico - mobile */
+body.movel .abertura.pronto .abertura__dica {
+  gap: 8px;
+}
+
+body.movel .abertura.pronto #dica {
+  font-size: 13px;
+  letter-spacing: .12em;
+  gap: 10px;
+}
+
+body.movel .abertura.pronto #dica::before {
+  width: 28px;
+  height: 44px;
+  border-radius: 14px;
+}
+
+body.movel .abertura.pronto .abertura__fio {
+  height: 23px;
 }
