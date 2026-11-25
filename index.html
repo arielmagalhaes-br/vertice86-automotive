@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vértice 86 | Diagnóstico e reparo automotivo em Recife</title>
+<meta name="description" content="Diagnóstico, reparo e revisão para carros nacionais e importados em Recife. Experimente o orçamento por WhatsApp nesta demonstração de portfólio.">
+<meta name="theme-color" content="#050608">
+<meta name="robots" content="index, follow" id="meta-robots">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon.png">
+<link rel="preload" href="fontes/Michroma-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="poster-v.jpg" as="image" media="(max-width: 819px), (max-aspect-ratio: 20/19)">
+<link rel="preload" href="poster.jpg" as="image" media="(min-width: 820px) and (min-aspect-ratio: 20/19)">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topo">
+  <a class="topo__marca" id="marca" inert href="#" aria-label="Vértice 86 — Oficina Automotiva, início"><img src="logo-small.webp" alt="" width="432" height="144"></a>
+  <div class="topo__acoes">
+    <a class="pular" href="#info">Pular animação</a>
+    <a class="botao botao--topo" data-zap href="#contato-demo">Orçamento</a>
+  </div>
+</header>
+
+<nav class="barra" id="barra" aria-label="Contato rápido">
+  <a class="botao" data-zap href="#contato-demo" id="b-zap"></a>
+  <a class="botao botao--sec" id="b-ligar" href="#">Ligar</a>
+</nav>
+
+<div class="previa" id="previa" role="note">Demonstração de portfólio · oficina fictícia</div>
+
+<noscript><p class="sem-js">Ative JavaScript para explorar a demonstração interativa.</p></noscript>
+<main>
+  <section class="trilha" id="trilha" aria-label="Apresentação da oficina">
+    <div class="palco" id="palco">
+      <video class="video" id="video" muted playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+      <img class="estatico" id="estatico" alt="" hidden>
+      <div class="vinheta"></div>
+
+      <div class="abertura" id="abertura">
+        <img class="abertura__logo" src="logo.webp" alt="Vértice 86 Automotiva — carro clássico" width="1500" height="500">
+        <div class="abertura__dica" aria-live="polite">
+          <span id="dica">Carregando o vídeo</span>
+          <div class="abertura__carga"><i id="carga"></i></div>
+          <div class="abertura__fio"></div>
+        </div>
+      </div>
+
+      <svg class="linhas" id="linhas" aria-hidden="true"></svg>
+      <ul class="servicos" id="servicos" aria-label="Serviços principais"></ul>
+      <div class="cartao" id="cartao" inert>
+        <div class="cartao__topo"><span class="cartao__n" id="c-n"></span><div class="cartao__pontos" id="c-pontos"></div></div>
+        <h3 class="cartao__t" id="c-t"></h3>
+        <p class="cartao__d" id="c-d"></p>
+        <button class="cartao__b" id="c-b" type="button"></button>
+      </div>
+
+      <div class="fecho" id="fecho" data-vivo="0" inert>
+        <h1>Diagnóstico e reparo para carros nacionais e importados.</h1>
+        <div class="fecho__acao">
+          <a class="botao" data-zap href="#contato-demo"></a>
+          <span id="horario-curto"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info" id="info" aria-labelledby="t-onde">
+    <div class="info__grade">
+      <div>
+        <h2 id="t-onde">Onde estamos</h2>
+        <p class="status" id="status" role="status"><i class="status__ponto"></i><span id="status-texto">Verificando o horário</span></p>
+        <dl class="dados">
+          <dt>Endereço</dt><dd id="d-endereco"></dd>
+          <dt>Horário</dt><dd id="d-horario"></dd>
+          <dt>WhatsApp</dt><dd><a data-zap href="#contato-demo" id="d-telefone"></a></dd>
+          <dt>Instagram</dt><dd><a id="d-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram (exemplo)</a></dd>
+        </dl>
+        <p class="nota"><b id="d-nota"></b><span id="d-avaliacoes"></span></p>
+        <div class="acoes">
+          <a class="botao" id="d-zap" data-zap href="#contato-demo"></a>
+          <a class="botao botao--sec" id="d-ligar" href="#">Ligar</a>
+          <a class="botao botao--sec" id="d-rota" href="#" target="_blank" rel="noopener">Traçar rota</a>
+          <a class="botao botao--sec" id="d-waze" href="#" target="_blank" rel="noopener">Waze</a>
+          <button class="botao botao--sec" id="d-copiar" type="button">Copiar endereço</button>
+        </div>
+      </div>
+      <div class="mapa" id="d-mapa-caixa">
+        <div class="mapa__cartao" id="d-mapa-cartao">
+          <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <strong id="d-mapa-end"></strong>
+          <span>Mapa de exemplo: Marco Zero, Recife. Não é o endereço da oficina. O mapa só carrega ao tocar.</span>
+          <button class="botao botao--sec" id="d-mapa-ver" type="button">Ver mapa</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="info__grade info__grade--servicos">
+      <div>
+        <h2>O que a oficina faz</h2>
+        <p class="dica-lista">Toque em um serviço para pedir orçamento.</p>
+        <ul class="lista" id="lista-servicos"></ul>
+      </div>
+      <div>
+        <h3 class="marcas-titulo">Marcas atendidas (exemplo)</h3>
+        <p class="marcas" id="marcas-texto"></p>
+        <p class="marcas">Não achou seu carro na lista? Simule um orçamento pelo formulário.</p>
+      </div>
+    </div>
+
+    <div class="orcamento" id="orcamento">
+      <div class="orcamento__txt">
+        <h2>Peça seu orçamento</h2>
+        <p>Diga o carro e o serviço para simular a mensagem do WhatsApp. Nenhum dado é enviado a uma oficina real.</p>
+      </div>
+      <form class="form" id="form" novalidate>
+        <label><span>Seu nome <span class="opc">(opcional)</span></span>
+          <input name="nome" maxlength="100" autocomplete="name"></label>
+        <label><span>Carro</span>
+          <input name="carro" id="f-carro" required maxlength="120" autocomplete="off" placeholder="Ex.: BMW X1 2018"></label>
+        <label class="largo"><span>Serviço</span>
+          <select name="servico" id="f-servico" required></select></label>
+        <label class="largo"><span>O que o carro está sentindo? <span class="opc">(opcional)</span></span>
+          <textarea name="relato" maxlength="1000" rows="4" placeholder="Ex.: barulho na suspensão, luz de injeção acesa"></textarea></label>
+        <p class="erro" id="f-erro" role="alert" hidden></p>
+        <button class="botao" type="submit" id="f-enviar"></button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p id="rod-nome"></p>
+  <p>Projeto demonstrativo de portfólio. Marca, contatos, horário e avaliações fictícios.</p>
+</footer>
+
+<dialog id="contato-demo" aria-labelledby="demo-titulo" class="demo-dialog">
+  <h2 id="demo-titulo">Contato demonstrativo</h2>
+  <p>Esta oficina é fictícia. Nenhuma mensagem ou ligação será enviada automaticamente.</p>
+  <pre id="demo-mensagem"></pre>
+  <div class="acoes"><button class="botao botao--sec" id="demo-copiar" type="button">Copiar mensagem</button>
+  <a class="botao botao--sec" id="demo-whatsapp" href="https://www.whatsapp.com/" target="_blank" rel="noopener">Abrir WhatsApp</a>
+  <button class="botao" id="demo-fechar" type="button" autofocus>Fechar</button></div>
+  <p id="demo-retorno" role="status"></p>
+</dialog>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Vértice 86 | Diagnóstico e reparo automotivo em Recife","description":"Demonstração de portfólio de uma landing page automotiva para oficina fictícia.","inLanguage":"pt-BR","about":{"@type":"Thing","name":"Desenvolvimento web e animação automotiva interativa"}}</script>
+
+<script defer src="config.js"></script>
+<script defer src="app.js"></script>
+</body>
+</html>
