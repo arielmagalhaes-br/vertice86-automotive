@@ -6,6 +6,8 @@
 const $ = s => document.querySelector(s);
 const clamp = (x,a=0,b=1) => Math.min(b, Math.max(a,x));
 const zapUrl = "#contato-demo";
+let vw = innerWidth, vh = innerHeight;
+let movel = vw < 820 || vh > vw * 0.95;
 
 const body=document.body, trilha=$("#trilha"), palco=$("#palco"), video=$("#video"),
       abertura=$("#abertura"), dica=$("#dica"), carga=$("#carga"), svg=$("#linhas"),
@@ -149,18 +151,24 @@ body.classList.add("com-previa");
 
 /* ----- serviços ao lado do carro ----- */
 const NS = "http://www.w3.org/2000/svg";
+const fragmentoServicos = document.createDocumentFragment();
+const fragmentoLinhas = document.createDocumentFragment();
+
 const itens = SERVICOS.map((s,i)=>{
   const li=document.createElement("li");
   li.className="servico servico--"+s.lado;
   const bt=document.createElement("button"); bt.type="button"; bt.textContent=s.nome; bt.dataset.opcao=s.opcao||""; bt.tabIndex=-1;
-  li.appendChild(bt); ulServ.appendChild(li);
+  li.appendChild(bt); fragmentoServicos.appendChild(li);
   const path=document.createElementNS(NS,"path"); const dot=document.createElementNS(NS,"circle"); dot.setAttribute("r","3.2");
-  svg.appendChild(path); svg.appendChild(dot);
+  fragmentoLinhas.append(path, dot);
   return {s,i,li,bt,path,dot,len:0,ini:SERV_INICIO+i*SERV_PASSO};
 });
 
+ulServ.appendChild(fragmentoServicos);
+svg.appendChild(fragmentoLinhas);
+
 /* ----- modo (tela larga x celular) ----- */
-let movel=false, vw=innerWidth, vh=innerHeight;
+
 function calcModo(){
   vw=innerWidth; vh=innerHeight;
   movel = vw < 820 || vh > vw*0.95;
@@ -168,9 +176,9 @@ function calcModo(){
 }
 
 /* ----- posiciona textos e linhas sobre a imagem ----- */
-function layout(){
+function layout(atualizarModo = true){
   const eraMovel=movel;
-  calcModo();
+  if (atualizarModo) calcModo();
   if(eraMovel!==movel){idxCartao=-2; cartao.inert=true; cartao.classList.remove("on");}
   if (movel){ itens.forEach(it=>{ it.li.style.left=it.li.style.top=it.li.style.maxWidth=""; }); if (idxCartao>=0 && idxCartao<NSERV) linhaDoCartao(idxCartao); return; }
   const W = Math.max(vw, vh*16/9), H = W*9/16, ox=(vw-W)/2, oy=(vh-H)/2;
@@ -187,7 +195,7 @@ function layout(){
     const mx = x0 + (x1-x0)*.45;
     path.setAttribute("d","M"+x0+" "+y0+" L"+mx+" "+y0+" L"+x1+" "+y1);
     dot.setAttribute("cx",x1); dot.setAttribute("cy",y1);
-    it.len = path.getTotalLength();
+    it.len = Math.abs(mx-x0) + Math.hypot(x1-mx, y1-y0);
     path.style.strokeDasharray = it.len;
   });
 }
@@ -346,7 +354,7 @@ function escolherVideo(){
   const c = navigator.connection||{};
   const lento = c.saveData || /(^|-)2g|3g/.test(c.effectiveType||"");
   if (movel) return VIDEO_V;
-  return (innerWidth<900 || lento) ? VIDEO_LEVE : VIDEO_HD;
+  return (vw<900 || lento) ? VIDEO_LEVE : VIDEO_HD;
 }
 
 /* ----- versão simples: sem vídeo, mostra o carro final com tudo pronto para usar ----- */
@@ -431,7 +439,8 @@ async function carregar(){
 
 /* ----- inicialização ----- */
 function iniciar(){
-  layout(); aplicarMidia();
+  body.classList.toggle("movel", movel);
+  layout(false); aplicarMidia();
   if (semMovimento){ modoSimples(); return; }   /* quem pediu menos movimento recebe a versão simples */
   pintar(0); acordar(); carregar();
   addEventListener("scroll",acordar,{passive:true});
@@ -442,6 +451,14 @@ addEventListener("resize",()=>{ clearTimeout(tmr); tmr=setTimeout(()=>{
   if (!body.classList.contains("simples") && modoCarregado!==null && movel!==modoCarregado) carregar();   /* girou o celular: troca o vídeo */
   acordar(); pintar(atual);
 },150); });
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ layout(); pintar(atual); });
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => {
+    if (movel && !body.classList.contains("simples") &&
+        idxCartao >= 0 && idxCartao < NSERV) {
+      linhaDoCartao(idxCartao);
+      pintar(atual);
+    }
+  });
+}
 iniciar();
 })();
