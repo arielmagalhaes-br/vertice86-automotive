@@ -388,7 +388,7 @@ function pronto(){
   if (body.classList.contains("simples")) return;
   abertura.classList.add("pronto");
   dica.textContent = "Role para baixo";
-  carga.style.width="100%";
+  carga.style.transform="scaleX(1)";
   /* destrava a busca de quadros em navegadores de celular */
   const pl = video.play(); if (pl && pl.then) pl.then(()=>video.pause()).catch(()=>{});
   acordar();
@@ -398,7 +398,7 @@ async function carregar(){
   if(ctlAtual) ctlAtual.abort();
   clearInterval(relogio); limparVideo();
   const url = escolherVideo(), c = navigator.connection||{};
-  abertura.classList.remove("pronto"); dica.textContent="Carregando o vídeo"; carga.style.width="0%";
+  abertura.classList.remove("pronto"); dica.textContent="Carregando o vídeo"; carga.style.transform="scaleX(0)";
   /* economia de dados ligada, 2G ou aparelho com pouca memória: nem tenta baixar o vídeo */
   if (c.saveData || /(^|-)2g/.test(c.effectiveType||"") || (navigator.deviceMemory && navigator.deviceMemory<=2)) return modoSimples();
 
@@ -434,7 +434,7 @@ async function carregar(){
 
         if (percentual !== ultimoPercentual &&
             (agora - ultimaAtualizacao >= 100 || percentual === 100)) {
-          carga.style.width = percentual + "%";
+          carga.style.transform = "scaleX(" + (percentual / 100) + ")";
           ultimoPercentual = percentual;
           ultimaAtualizacao = agora;
         }

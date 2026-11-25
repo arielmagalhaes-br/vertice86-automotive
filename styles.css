@@ -62,7 +62,7 @@ a{color:inherit}
 .abertura__fio::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--branco);animation:fio 1.8s ease-in-out infinite}
 @keyframes fio{to{top:110%}}
 .abertura__carga{width:min(220px,50vw);height:2px;background:rgba(200,205,211,.18);border-radius:2px;overflow:hidden}
-.abertura__carga i{display:block;height:100%;width:0;background:var(--farol);transition:width .2s}
+.abertura__carga i{display:block;height:100%;width:100%;background:var(--farol);transform:scaleX(0);transform-origin:left center;transition:transform .2s}
 .abertura.pronto .abertura__carga{display:none}
 .abertura:not(.pronto) .abertura__fio{display:none}
 
