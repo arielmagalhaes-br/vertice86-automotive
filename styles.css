@@ -305,3 +305,57 @@ body.movel .abertura.pronto .abertura__fio {
     width: min(40svh, 78vw, 360px);
   }
 }
+
+/* V6 - Estabilidade do indicador */
+.abertura .abertura__dica {
+  width: min(260px, 90vw);
+  height: 132px;
+}
+
+.abertura #dica,
+.abertura.pronto #dica {
+  position: absolute;
+  inset: auto 0 39px;
+  height: 22px;
+  display: block;
+  line-height: 22px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.abertura.pronto #dica::before {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 16px);
+  transform: translateX(-50%);
+}
+
+.abertura .abertura__carga {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.abertura.pronto .abertura__fio {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body.movel .abertura .abertura__dica {
+  width: min(220px, 90vw);
+  height: 102px;
+}
+
+body.movel .abertura #dica,
+body.movel .abertura.pronto #dica {
+  bottom: 31px;
+  height: 16px;
+  line-height: 16px;
+}
+
+body.movel .abertura.pronto #dica::before {
+  bottom: calc(100% + 10px);
+}
